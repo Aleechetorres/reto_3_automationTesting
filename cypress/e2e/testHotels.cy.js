@@ -30,6 +30,9 @@ describe("Test Hotel", () => {
   it("Clean the filters and verify that all the cards are again present", () => {
     cy.visit("https://aleechetorres.github.io/hotels/");
 
+    cy.get("[name='filter_countries']").select("Uruguay");
+    cy.get(".hotelsContainer").find(".card").should("contain", "Uruguay");
+    
     cy.get(".filter__Clean").click();
     cy.get(".hotelsContainer").find(".card").should("have.length", countCards);
   })
